@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgNav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b131e" />
+      <stop offset="100%" stop-color="#060a12" />
+    </linearGradient>
+    <linearGradient id="neonRoute" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#62e6ff" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#63e6a2" />
+    </linearGradient>
+    <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="520" fill="url(#bgNav)"/>
+
+  <!-- Blueprint / Coordinate Map Grid -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <path d="M 0 40 H 800 M 0 80 H 800 M 0 120 H 800 M 0 160 H 800 M 0 200 H 800 M 0 240 H 800 M 0 280 H 800 M 0 320 H 800 M 0 360 H 800 M 0 400 H 800 M 0 440 H 800 M 0 480 H 800"/>
+    <path d="M 40 0 V 520 M 80 0 V 520 M 120 0 V 520 M 160 0 V 520 M 200 0 V 520 M 240 0 V 520 M 280 0 V 520 M 320 0 V 520 M 360 0 V 520 M 400 0 V 520 M 440 0 V 520 M 480 0 V 520 M 520 0 V 520 M 560 0 V 520 M 600 0 V 520 M 640 0 V 520 M 680 0 V 520 M 720 0 V 520 M 760 0 V 520"/>
+  </g>
+
+  <!-- Campus Buildings Isometric Layout Blocks -->
+  <!-- Main Admin Block -->
+  <polygon points="120,180 240,120 360,180 240,240" fill="#141e2e" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <polygon points="120,180 240,240 240,290 120,230" fill="#0d1420" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <polygon points="240,240 360,180 360,230 240,290" fill="#111927" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="240" y="185" fill="#62e6ff" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" text-anchor="middle">MAIN ADMINISTRATIVE BLOCK</text>
+
+  <!-- AI & ML / CSE Block -->
+  <polygon points="440,110 560,50 680,110 560,170" fill="#182338" stroke="#62e6ff" stroke-width="1.5"/>
+  <polygon points="440,110 560,170 560,220 440,160" fill="#101724" stroke="rgba(98,230,255,0.3)" stroke-width="1"/>
+  <polygon points="560,170 680,110 680,160 560,220" fill="#131d2d" stroke="rgba(98,230,255,0.3)" stroke-width="1"/>
+  <text x="560" y="115" fill="#ffffff" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" text-anchor="middle">CSE · AI &amp; ML COMPLEX</text>
+
+  <!-- Central Library & Auditorium Block -->
+  <polygon points="280,340 400,280 520,340 400,400" fill="#141e2e" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <polygon points="280,340 400,400 400,450 280,390" fill="#0d1420" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <polygon points="400,400 520,340 520,390 400,450" fill="#111927" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="400" y="345" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" text-anchor="middle">CENTRAL LIBRARY &amp; AUDITORIUM</text>
+
+  <!-- Secondary Workshop & Quad -->
+  <polygon points="600,280 700,230 790,280 690,330" fill="#111826" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="695" y="285" fill="#64748b" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle">CAMPUS QUAD</text>
+
+  <!-- Graph Road & Pathways Network (Non-optimal routes in dim gray) -->
+  <path d="M 240 240 L 400 340 L 690 280" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M 120 230 L 280 390 L 400 450" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Optimal Shortest Route (Computed via Dijkstra) -->
+  <path d="M 240 240 Q 320 230 400 240 T 560 170" fill="none" stroke="url(#neonRoute)" stroke-width="4.5" filter="url(#routeGlow)"/>
+  
+  <!-- Waypoint Nodes on Route -->
+  <circle cx="240" cy="240" r="7" fill="#62e6ff" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="400" cy="240" r="5" fill="#38bdf8"/>
+  <circle cx="560" cy="170" r="8" fill="#63e6a2" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Navigation Search & Routing HUD UI Overlay -->
+  <g transform="translate(40, 40)">
+    <rect width="280" height="120" rx="14" fill="rgba(11,18,29,0.92)" stroke="rgba(98,230,255,0.25)" stroke-width="1.2"/>
+    <text x="18" y="28" fill="#62e6ff" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="800" letter-spacing="1">MCE NAVIGATE · GPS ROUTE ENGINE</text>
+    
+    <!-- Origin Pin -->
+    <circle cx="25" cy="54" r="4" fill="#62e6ff"/>
+    <text x="36" y="58" fill="#e2e8f0" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600">From: Main Admin Porch</text>
+
+    <!-- Destination Pin -->
+    <circle cx="25" cy="82" r="4" fill="#63e6a2"/>
+    <text x="36" y="86" fill="#e2e8f0" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600">To: AI &amp; ML Department (3rd Fl)</text>
+
+    <!-- Route Metrics pill -->
+    <rect x="18" y="96" width="244" height="16" rx="4" fill="rgba(255,255,255,0.04)"/>
+    <text x="24" y="108" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="9">Distance: <tspan fill="#63e6a2" font-weight="700">180m</tspan> · Walking Time: <tspan fill="#63e6a2" font-weight="700">2.1 mins</tspan> · Path: Smooth</text>
+  </g>
+
+  <!-- Contract Badge HUD bottom right -->
+  <g transform="translate(510, 440)">
+    <rect width="250" height="42" rx="10" fill="rgba(11,18,29,0.9)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <text x="15" y="19" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="600">SHARED NAVIGATION CONTRACT</text>
+    <text x="15" y="33" fill="#62e6ff" font-family="'Courier New', monospace" font-size="10">FastAPI &lt;=&gt; React &lt;=&gt; PostgreSQL</text>
+  </g>
+</svg>
+
